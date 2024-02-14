@@ -9,7 +9,7 @@ on:
   push:
   pull_request:
   schedule:
-    - cron: '24 19 * * 2'
+    - cron: '18 20 * * 5'
 
 permissions:
   contents: read
