@@ -194,4 +194,24 @@ class ProductRepositoryTest {
 
         assertFalse(productIterator.hasNext());
     }
+
+    @Test
+    void testFindByIdWhenProductExists() {
+        Product product = new Product();
+        product.setProductId("eb558e9f-1c39-460e-8860-71af6af63bd6");
+        product.setProductName("Apple Vision Pro");
+        product.setProductQuantity(50);
+        productRepository.create(product);
+
+        Product foundProduct = productRepository.findById("eb558e9f-1c39-460e-8860-71af6af63bd6");
+
+        assertEquals(product, foundProduct);
+    }
+
+    @Test
+    void testFindByIdWhenProductDoesNotExist() {
+        Product foundProduct = productRepository.findById("ef649b34-6c54-5473-87f4-82fb90f6e943");
+
+        assertNull(foundProduct);
+    }
 }
