@@ -60,7 +60,7 @@ public class ProductController {
 
     @GetMapping("/delete")
     public String deleteProduct(@RequestParam String productId) {
-        service.delete(productId); // Assuming you have a delete method in your ProductService
+        service.delete(productId);
         return "redirect:list";
     }
 }
