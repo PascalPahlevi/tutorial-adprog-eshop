@@ -23,17 +23,17 @@ class ProductRepositoryTest {
     @Test
     void testCreateAndFind() {
         Product product = new Product();
-        product.setProductId("eb558e9f-1c39-460e-8860-71af6af63bd6");
-        product.setProductName("Sampo Cap Bambang");
-        product.setProductQuantity(100);
+        product.setId("eb558e9f-1c39-460e-8860-71af6af63bd6");
+        product.setName("Sampo Cap Bambang");
+        product.setQuantity(100);
         productRepository.create(product);
 
         Iterator<Product> productIterator = productRepository.findAll();
         assertTrue(productIterator.hasNext());
         Product savedProduct = productIterator.next();
-        assertEquals(product.getProductId(), savedProduct.getProductId());
-        assertEquals(product.getProductName(), savedProduct.getProductName());
-        assertEquals(product.getProductQuantity(), savedProduct.getProductQuantity());
+        assertEquals(product.getId(), savedProduct.getId());
+        assertEquals(product.getName(), savedProduct.getName());
+        assertEquals(product.getQuantity(), savedProduct.getQuantity());
     }
 
     @Test
@@ -44,75 +44,75 @@ class ProductRepositoryTest {
     @Test
     void testFindAllIfMoreThanOneProduct() {
         Product product1 = new Product();
-        product1.setProductId("eb558e9f-1c39-460e-8860-71af6af63bd6");
-        product1.setProductName("Sampo Cap Bambang");
-        product1.setProductQuantity(100);
+        product1.setId("eb558e9f-1c39-460e-8860-71af6af63bd6");
+        product1.setName("Sampo Cap Bambang");
+        product1.setQuantity(100);
         productRepository.create(product1);
 
         Product product2 = new Product();
-        product2.setProductId("a0f9de46-90b1-437d-a0bf-d0821dde9096");
-        product2.setProductName("Sampo Cap Usep");
-        product2.setProductQuantity(50);
+        product2.setId("a0f9de46-90b1-437d-a0bf-d0821dde9096");
+        product2.setName("Sampo Cap Usep");
+        product2.setQuantity(50);
         productRepository.create(product2);
 
         Iterator<Product> productIterator = productRepository.findAll();
         assertTrue(productIterator.hasNext());
         Product savedProduct = productIterator.next();
-        assertEquals(product1.getProductId(), savedProduct.getProductId());
+        assertEquals(product1.getId(), savedProduct.getId());
         savedProduct = productIterator.next();
-        assertEquals(product2.getProductId(), savedProduct.getProductId());
+        assertEquals(product2.getId(), savedProduct.getId());
         assertFalse(productIterator.hasNext());
     }
 
     @Test
     void testEditProduct() {
         Product product1 = new Product();
-        product1.setProductId("a0f9de46-90b1-437d-a0bf-d0821dde9096");
-        product1.setProductId("Sampo Cap Usep");
-        product1.setProductQuantity(50);
+        product1.setId("a0f9de46-90b1-437d-a0bf-d0821dde9096");
+        product1.setId("Sampo Cap Usep");
+        product1.setQuantity(50);
         productRepository.create(product1);
 
         Product product2 = new Product();
-        product2.setProductId(product1.getProductId());
-        product2.setProductName("Apple Vision Pro");
-        product2.setProductQuantity(100);
+        product2.setId(product1.getId());
+        product2.setName("Apple Vision Pro");
+        product2.setQuantity(100);
         productRepository.update(product2);
 
         Iterator<Product> productIterator = productRepository.findAll();
         assertTrue(productIterator.hasNext());
         Product savedProduct = productIterator.next();
 
-        assertEquals(product1.getProductId(), savedProduct.getProductId());
-        assertEquals(product2.getProductId(), savedProduct.getProductId());
-        assertEquals(product2.getProductName(), savedProduct.getProductName());
-        assertEquals(product2.getProductQuantity(), savedProduct.getProductQuantity());
+        assertEquals(product1.getId(), savedProduct.getId());
+        assertEquals(product2.getId(), savedProduct.getId());
+        assertEquals(product2.getName(), savedProduct.getName());
+        assertEquals(product2.getQuantity(), savedProduct.getQuantity());
         assertFalse(productIterator.hasNext());
     }
 
     @Test
     void testEditIfMoreThanOneProduct() {
         Product product1 = new Product();
-        product1.setProductId("a0f9de46-90b1-437d-a0bf-d0821dde9096");
-        product1.setProductName("Sampo Cap Usep");
-        product1.setProductQuantity(50);
+        product1.setId("a0f9de46-90b1-437d-a0bf-d0821dde9096");
+        product1.setName("Sampo Cap Usep");
+        product1.setQuantity(50);
         productRepository.create(product1);
 
         Product product2 = new Product();
-        product2.setProductId(product1.getProductId());
-        product2.setProductName("Playstation 5");
-        product2.setProductQuantity(80);
+        product2.setId(product1.getId());
+        product2.setName("Playstation 5");
+        product2.setQuantity(80);
         productRepository.update(product2);
 
         Product product3 = new Product();
-        product3.setProductId("eb558e9f-1c39-460e-8860-71af6af63bd6");
-        product3.setProductName("Apple Vision Pro");
-        product3.setProductQuantity(100);
+        product3.setId("eb558e9f-1c39-460e-8860-71af6af63bd6");
+        product3.setName("Apple Vision Pro");
+        product3.setQuantity(100);
         productRepository.create(product3);
 
         Product product4 = new Product();
-        product4.setProductId(product3.getProductId());
-        product4.setProductName("Metaquest 3");
-        product4.setProductQuantity(100);
+        product4.setId(product3.getId());
+        product4.setName("Metaquest 3");
+        product4.setQuantity(100);
         productRepository.update(product4);
 
         Iterator<Product> productIterator = productRepository.findAll();
@@ -120,30 +120,30 @@ class ProductRepositoryTest {
         assertTrue(productIterator.hasNext());
         Product savedProduct = productIterator.next();
 
-        assertEquals(product1.getProductId(), savedProduct.getProductId());
-        assertEquals(product2.getProductId(), savedProduct.getProductId());
-        assertEquals(product2.getProductName(), savedProduct.getProductName());
-        assertEquals(product2.getProductQuantity(), savedProduct.getProductQuantity());
+        assertEquals(product1.getId(), savedProduct.getId());
+        assertEquals(product2.getId(), savedProduct.getId());
+        assertEquals(product2.getName(), savedProduct.getName());
+        assertEquals(product2.getQuantity(), savedProduct.getQuantity());
 
         assertTrue(productIterator.hasNext());
         savedProduct = productIterator.next();
 
-        assertEquals(product3.getProductId(), savedProduct.getProductId());
-        assertEquals(product4.getProductId(), savedProduct.getProductId());
-        assertEquals(product4.getProductName(), savedProduct.getProductName());
-        assertEquals(product4.getProductQuantity(), savedProduct.getProductQuantity());
+        assertEquals(product3.getId(), savedProduct.getId());
+        assertEquals(product4.getId(), savedProduct.getId());
+        assertEquals(product4.getName(), savedProduct.getName());
+        assertEquals(product4.getQuantity(), savedProduct.getQuantity());
         assertFalse(productIterator.hasNext());
     }
 
     @Test
     void testDeleteProduct() {
         Product product1 = new Product();
-        product1.setProductId("a0f9de46-90b1-437d-a0bf-d0821dde9096");
-        product1.setProductId("Sampo Cap Usep");
-        product1.setProductQuantity(50);
+        product1.setId("a0f9de46-90b1-437d-a0bf-d0821dde9096");
+        product1.setName("Sampo Cap Usep");
+        product1.setQuantity(50);
         productRepository.create(product1);
 
-        productRepository.delete(product1.getProductId());
+        productRepository.delete(product1.getId());
 
         Iterator<Product> productIterator = productRepository.findAll();
         assertFalse(productIterator.hasNext());
@@ -152,45 +152,45 @@ class ProductRepositoryTest {
     @Test
     void testDeleteWithMultipleProducts() {
         Product product1 = new Product();
-        product1.setProductId("a0f9de46-90b1-437d-a0bf-d0821dde9096");
-        product1.setProductName("Sampo Cap Usep");
-        product1.setProductQuantity(100);
+        product1.setId("a0f9de46-90b1-437d-a0bf-d0821dde9096");
+        product1.setName("Sampo Cap Usep");
+        product1.setQuantity(100);
         productRepository.create(product1);
 
         Product product2 = new Product();
-        product2.setProductId("eb558e9f-1c39-460e-8860-71af6af63bd6");
-        product2.setProductName("Playstation 5");
-        product2.setProductQuantity(30);
+        product2.setId("eb558e9f-1c39-460e-8860-71af6af63bd6");
+        product2.setName("Playstation 5");
+        product2.setQuantity(30);
         productRepository.create(product2);
 
         Product product3 = new Product();
-        product3.setProductId("a1f8e34-2bc5-547f-82de54fb4f75");
-        product3.setProductName("Metaquest 3");
-        product3.setProductQuantity(23);
+        product3.setId("a1f8e34-2bc5-547f-82de54fb4f75");
+        product3.setName("Metaquest 3");
+        product3.setQuantity(23);
         productRepository.create(product3);
 
         Product product4 = new Product();
-        product4.setProductId(product2.getProductId());
-        product4.setProductName("Apple Vision Pro");
-        product4.setProductQuantity(999);
+        product4.setId(product2.getId());
+        product4.setName("Apple Vision Pro");
+        product4.setQuantity(999);
         productRepository.create(product4);
 
-        productRepository.delete(product1.getProductId());
-        productRepository.delete(product3.getProductId());
+        productRepository.delete(product1.getId());
+        productRepository.delete(product3.getId());
         Iterator<Product> productIterator = productRepository.findAll();
 
         assertTrue(productIterator.hasNext());
         Product savedProduct = productIterator.next();
 
-        assertEquals(product2.getProductId(), savedProduct.getProductId());
-        assertEquals(product2.getProductName(), savedProduct.getProductName());
-        assertEquals(product2.getProductQuantity(), savedProduct.getProductQuantity());
+        assertEquals(product2.getId(), savedProduct.getId());
+        assertEquals(product2.getName(), savedProduct.getName());
+        assertEquals(product2.getQuantity(), savedProduct.getQuantity());
 
         assertTrue(productIterator.hasNext());
         savedProduct = productIterator.next();
-        assertEquals(product4.getProductId(), savedProduct.getProductId());
-        assertEquals(product4.getProductName(), savedProduct.getProductName());
-        assertEquals(product4.getProductQuantity(), savedProduct.getProductQuantity());
+        assertEquals(product4.getId(), savedProduct.getId());
+        assertEquals(product4.getName(), savedProduct.getName());
+        assertEquals(product4.getQuantity(), savedProduct.getQuantity());
 
         assertFalse(productIterator.hasNext());
     }
@@ -198,9 +198,9 @@ class ProductRepositoryTest {
     @Test
     void testFindByIdWhenProductExists() {
         Product product = new Product();
-        product.setProductId("eb558e9f-1c39-460e-8860-71af6af63bd6");
-        product.setProductName("Apple Vision Pro");
-        product.setProductQuantity(50);
+        product.setId("eb558e9f-1c39-460e-8860-71af6af63bd6");
+        product.setName("Apple Vision Pro");
+        product.setQuantity(50);
         productRepository.create(product);
 
         Product foundProduct = productRepository.findById("eb558e9f-1c39-460e-8860-71af6af63bd6");

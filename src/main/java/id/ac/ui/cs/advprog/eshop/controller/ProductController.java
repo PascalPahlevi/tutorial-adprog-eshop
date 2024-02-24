@@ -8,11 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.util.StringUtils;
 
 
 import java.util.List;
-import java.util.UUID;
 
 @Controller
 @RequestMapping("/product")
@@ -30,7 +28,6 @@ public class ProductController {
 
     @PostMapping("/create")
     public String createProductPost(@ModelAttribute Product product, Model model) {
-        product.setProductId(UUID.randomUUID().toString());
         service.create(product);
         return "redirect:list";
     }
@@ -44,14 +41,9 @@ public class ProductController {
 
     @GetMapping("/edit/{productId}")
     public String editProductPage(@PathVariable String productId, Model model) {
-        if (StringUtils.hasText(productId)) {
             Product product = service.findById(productId);
             model.addAttribute("product", product);
             return "editProduct";
-        } else {
-
-            return "redirect:list";
-        }
     }
 
     @PostMapping("/edit")
@@ -102,8 +94,8 @@ class CarController extends ProductController {
 
     @PostMapping("/editCar")
     public String editCarPost(@ModelAttribute Car car, Model model) {
-        System.out.println(car.getCarId());
-        carService.update(car.getCarId(), car);
+        System.out.println(car.getId());
+        carService.update(car.getId(), car);
 
         return "redirect:listCar";
     }
