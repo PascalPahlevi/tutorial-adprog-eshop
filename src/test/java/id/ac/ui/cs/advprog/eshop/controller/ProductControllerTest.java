@@ -47,15 +47,15 @@ class ProductControllerTest {
     @Test
     void TestProductListPage() {
         Product product1 = new Product();
-        product1.setProductId("eb558e9f-1c39-460e-8860-71af6af63bd6");
-        product1.setProductName("PS5");
-        product1.setProductQuantity(300);
+        product1.setId("eb558e9f-1c39-460e-8860-71af6af63bd6");
+        product1.setName("PS5");
+        product1.setQuantity(300);
         productRepository.create(product1);
 
         Product product2 = new Product();
-        product2.setProductId("a0f9de46-90b1-437d-a0bf-d0821dde9096");
-        product2.setProductName("Apple Vision Pro");
-        product2.setProductQuantity(250);
+        product2.setId("a0f9de46-90b1-437d-a0bf-d0821dde9096");
+        product2.setName("Apple Vision Pro");
+        product2.setQuantity(250);
         productRepository.create(product2);
 
         List<Product> productList = List.of(product1, product2);
