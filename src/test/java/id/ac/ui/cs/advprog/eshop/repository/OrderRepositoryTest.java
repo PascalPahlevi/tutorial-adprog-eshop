@@ -81,7 +81,7 @@ public class OrderRepositoryTest {
     }
 
     @Test
-    void testFindByIdNotFound() {
+    void testFindByIdIfIdNotFound() {
         for (Order order : orders) {
             orderRepository.save(order);
         }
