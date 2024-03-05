@@ -61,7 +61,7 @@ class OrderTest {
 
     @Test
     void testCreateOrderInvalidStatus() {
-        assertThrows(IllegalConnectorArgumentsException.class, () -> {
+        assertThrows(IllegalArgumentException.class, () -> {
             Order order = new Order("13652556-012a-4c07-b546-54eb1396d79b",
                     this.products, 1708560000L, "Pascal Pahlevi", "MEOW");
         });
@@ -79,6 +79,6 @@ class OrderTest {
     void testSetStatusToInvalidStatus() {
         Order order = new Order("13652556-012a-4c07-b546-54eb1396d79b",
                 this.products, 1708560000L, "Pascal Pahlevi");
-        assertThrows(IllegalConnectorArgumentsException.class, () -> order.setStatus("MEOW"));
+        assertThrows(IllegalArgumentException.class, () -> order.setStatus("MEOW"));
     }
 }
