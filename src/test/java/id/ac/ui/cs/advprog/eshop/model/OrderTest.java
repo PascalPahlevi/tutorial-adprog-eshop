@@ -2,7 +2,6 @@ package id.ac.ui.cs.advprog.eshop.model;
 
 import com.sun.jdi.connect.IllegalConnectorArgumentsException;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
@@ -44,8 +43,8 @@ class OrderTest {
 
         assertSame(this.products, order.getProducts());
         assertEquals(2, order.getProducts().size());
-        assertEquals("Sampo Cap Bambang", order.getProducts.get(0).getProductsName());
-        assertEquals("Sabun Cap Usep", order.getProducts().get(1).getProductName());
+        assertEquals("Sampo Cap Bambang", order.getProducts().get(0).getName());
+        assertEquals("Sabun Cap Usep", order.getProducts().get(1).getName());
 
         assertEquals("13652556-012a-4c07-b546-54eb1396d79b", order.getId());
         assertEquals(1708560000L, order.getOrderTime());
