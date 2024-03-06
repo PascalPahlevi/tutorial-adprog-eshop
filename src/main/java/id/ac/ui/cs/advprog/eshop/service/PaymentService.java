@@ -9,4 +9,8 @@ public interface PaymentService {
     public Payment updateStatus(String paymentId, String status);
     Payment findById(String paymentId);
     List<Payment> findAll();
+
+    Payment createPaymentByVoucherCode(String voucherCode);
+
+    Payment createPaymentByBankTransfer(String bankName, String referenceCode);
 }
