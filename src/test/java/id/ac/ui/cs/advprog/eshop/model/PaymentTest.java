@@ -11,44 +11,44 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class PaymentTest {
 
-    private Map<String, String > paymentVoucher;
+    private Map<String, String > paymentData;
     @BeforeEach
     void setUp() {
-        paymentVoucher = new HashMap<>();
-        paymentVoucher.put("voucherCode", "ESHOP1234ABC5678");
+        paymentData = new HashMap<>();
+        paymentData.put("voucherCode", "ESHOP1234ABC5678");
     }
 
     @Test
     void testCreateVoucher() {
-        Payment payment = new Payment("2c61b6d0-5619-4f81-9254-a2390fc275f7", "voucherCode", paymentVoucher);
+        Payment payment = new Payment("2c61b6d0-5619-4f81-9254-a2390fc275f7", "voucherCode", paymentData);
 
         assertEquals("2c61b6d0-5619-4f81-9254-a2390fc275f7", payment.getId());
         assertEquals("voucherCode", payment.getMethod());
-        assertEquals(paymentVoucher, payment.getPaymentType());
+        assertEquals(paymentData, payment.getPaymentData());
     }
 
     @Test
     void testCreateVoucherSuccessStatus() {
-        Payment payment = new Payment("2c61b6d0-5619-4f81-9254-a2390fc275f7", "voucherCode", paymentVoucher, "SUCCESS");
+        Payment payment = new Payment("2c61b6d0-5619-4f81-9254-a2390fc275f7", "voucherCode", paymentData, "SUCCESS");
         assertEquals("SUCCESS", payment.getStatus());
     }
 
     @Test
     void testCreateVoucherRejectedStatus() {
-        Payment payment = new Payment("2c61b6d0-5619-4f81-9254-a2390fc275f7", "voucherCode", paymentVoucher, "REJECTED");
+        Payment payment = new Payment("2c61b6d0-5619-4f81-9254-a2390fc275f7", "voucherCode", paymentData, "REJECTED");
         assertEquals("REJECTED", payment.getStatus());
     }
 
     @Test
     void testSetStatusToRejected() {
-        Payment payment = new Payment("2c61b6d0-5619-4f81-9254-a2390fc275f7", "voucherCode", paymentVoucher);
+        Payment payment = new Payment("2c61b6d0-5619-4f81-9254-a2390fc275f7", "voucherCode", paymentData);
         payment.setStatus("REJECTED");
         assertEquals("REJECTED", payment.getStatus());
     }
 
     @Test
     void testSetStatusToInvalid() {
-        Payment payment = new Payment("2c61b6d0-5619-4f81-9254-a2390fc275f7", "voucherCode", paymentVoucher);
+        Payment payment = new Payment("2c61b6d0-5619-4f81-9254-a2390fc275f7", "voucherCode", paymentData);
         assertThrows(IllegalArgumentException.class, () -> payment.setStatus("MEOW"));
     }
 }
